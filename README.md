@@ -8,6 +8,7 @@ This is a simple web application that allows users to generate notes with custom
 
 - [Demo](#demo)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [How it Works](#how-it-works)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -23,6 +24,14 @@ Check out the live demo of the NotesWall application [here](https://22pankajsahu
 
 - Create and display notes with different background colors.
 - User-friendly interface for adding and viewing notes.
+
+  ## Screenshots
+
+Include relevant screenshots of the application here.
+
+![1 LapTop View Screenshot 2023-08-31 ](https://github.com/22pankajsahu/m6Day12ClassChallenge/assets/135128502/e08c82f7-e51c-47af-96d7-eaa9cbf00e43)
+
+![2 Mobile View Screenshot 2023-08-31 ](https://github.com/22pankajsahu/m6Day12ClassChallenge/assets/135128502/623625e9-c3bc-4f7a-bd54-dffbf564b975)
 
 ## How it Works
 
