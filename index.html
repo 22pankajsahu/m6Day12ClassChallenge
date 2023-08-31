@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotesWall</title>
+    <meta name="author" content="PANKAJ SAHU">
+    <meta name="keywords" content="Notes, color, flex, display, add button">
+    <meta name="description" content="This is a simple web application that allows users to generate notes and user can colorthe background of given text box.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #f2f2f2;
+            padding: 15px;
+        }
+        .content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .note-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .input-text {
+            flex: 1;
+            height: 100px;
+            padding: 10px;
+            box-shadow: 5px 5px #394356;
+            background-color: #ffffff;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: #394356;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .notes-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .note {
+            padding: 15px;
+            border-radius: 5px;
+            width: 260px;
+            box-shadow: 4px 4px #f2f2f2;
+            margin: 10px;
+            height: 160px;
+            border-top: 5px solid #4d4d4d;
+            display: flex;
+            flex-direction: column;
+        }
+        .note-view {
+            flex: 1;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #f2f2f2 #ffffff;
+        }
+        .bin-icon {
+            margin-top: 8px;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+        .no-notes {
+            margin-top: 100px;
+            text-align: center;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="note-input">
+                <textarea class="input-text m-1 get-note" rows="3" placeholder="// Write a note here"></textarea>
+                <input type="color" value="#ccffcc" class="theme m-1 get-color">
+                <button class="btn m-1" id="add-btn">Add note</button>
+            </div>
+        </div>
+    </div>
+    <div class="notes-list mt-3">
+        <div class="no-notes">
+            <h4 class="msg">You haven't added notes yet.</h4>
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector('.get-note');
+        const addNoteBtn = document.querySelector('#add-btn');
+        const allNotes = [];
+
+        const notesList = document.querySelector('.notes-list');
+        addNoteBtn.addEventListener("click", addNewNote);
+        document.addEventListener('keypress', event => {
+            if (event.keyCode === 13) {
+                addNewNote();
+            }
+        });
+        function addNewNote() {
+            const note = input.value.trim();
+            if (note) {
+                const color = document.querySelector('.get-color').value;
+                allNotes.push({ note, color });
+                input.value = '';
+                input.focus();
+                displayNotes();
+            } else {
+                alert("A note can't be empty.");
+            }
+        }
+        function displayNotes() {
+            notesList.innerHTML = allNotes.length > 0 ?
+                allNotes.map((note, index) => `
+                    <div class="note" style="background-color:${note.color};">
+                        <div class="note-view">${note.note}</div>
+                    </div>
+                `).join('') :
+                '<div class="no-notes"><h4 class="msg">You haven\'t added notes yet.</h4></div>';
+        }
+    </script>
+</body>
+</html>
